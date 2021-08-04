@@ -57,7 +57,7 @@ public class LookingAt : MonoBehaviour
 
             GameObject obj=targetResolve(objectHit.gameObject);
 
-            if(targetFilter(obj)){
+            if(obj!=null&&targetFilter(obj)){
 
 
                 if(lookingAt==obj){
