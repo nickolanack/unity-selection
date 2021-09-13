@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-using Outline = cakeslice.Outline;
+using CakeSliceOutline = cakeslice.Outline;
 
-public class HighlightSelectable : MonoBehaviour
+public class HighlightSelectableBRP : MonoBehaviour
 {
 
     public LookingAt lookAt;
@@ -31,10 +31,10 @@ public class HighlightSelectable : MonoBehaviour
                 return;
             }
 
-            Outline o=obj.GetComponent<Outline>();
+            CakeSliceOutline o=obj.GetComponent<CakeSliceOutline>();
             if(o==null){
                 try{
-                    o=obj.AddComponent<Outline>();
+                    o=obj.AddComponent<CakeSliceOutline>();
                 }catch(Exception e){
                     Debug.LogError(e);
                 }
@@ -53,7 +53,7 @@ public class HighlightSelectable : MonoBehaviour
                 return;
             }
 
-            Outline o=obj.GetComponent<Outline>();
+            CakeSliceOutline o=obj.GetComponent<CakeSliceOutline>();
             if(o!=null){
                 o.enabled=false;
             }
@@ -86,8 +86,8 @@ public class HighlightSelectable : MonoBehaviour
                 selection.OnSelectionChanged(delegate(List<GameObject> list){
 
                     foreach(GameObject obj in lastSelection){
-                        if(!list.Contains(obj)){
-                            Outline o=obj.GetComponent<Outline>();
+                        if(obj!=null&&!list.Contains(obj)){
+                            CakeSliceOutline o=obj.GetComponent<CakeSliceOutline>();
                             if(o!=null){
                                 o.enabled=false;
                             }
@@ -96,10 +96,10 @@ public class HighlightSelectable : MonoBehaviour
 
                     foreach(GameObject obj in list){
                        
-                            Outline o=obj.GetComponent<Outline>();
+                            CakeSliceOutline o=obj.GetComponent<CakeSliceOutline>();
                             if(o==null){
                                 try{
-                                    o=obj.AddComponent<Outline>();
+                                    o=obj.AddComponent<CakeSliceOutline>();
                                 }catch(Exception e){
                                     Debug.LogError(e);
                                 }

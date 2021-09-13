@@ -51,7 +51,8 @@ public class Selection : MonoBehaviour
 
     }
 
-    public void SetSelected(List<GameObject> newList){
+
+    public bool IsAlreadySelected(List<GameObject> newList){
         if(list.Count==newList.Count){
 
             bool identical=true;
@@ -60,8 +61,20 @@ public class Selection : MonoBehaviour
             }
 
             if(identical){
-                return;
+                //Debug.Log("Identical");
+                return true;
             }
+        }
+
+
+        return false;
+
+    }
+
+    public void SetSelected(List<GameObject> newList){
+        
+        if(IsAlreadySelected(newList)){
+            return;
         }
 
         list=new List<GameObject>(newList);
